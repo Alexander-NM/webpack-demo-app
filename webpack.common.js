@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require("path")
+const path = require("path");
+const { sources } = require('webpack');
 
 module.exports = {
     entry: "./src/index.js",
@@ -16,6 +17,17 @@ module.exports = {
               "sass-loader"
             ],
           },
+          {
+            test: /\.html$/i,
+            loader: "html-loader",
+            options: {
+              sources: true  
+            }
+          },
+          {
+            test: /\.(svg|png|jpg|gif)$/,
+            type: 'asset/resource'
+          }
         ],
     },
 }
